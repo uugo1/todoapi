@@ -1,0 +1,39 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "todo application built using Mongo + NodeJs + Angular",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/uugo1/todo.git"
+  },
+  "keywords": [
+    "todo",
+    "nodejs",
+    "mongodb",
+    "restful",
+    "angularJs"
+  ],
+  "author": "Ugochukwu Uche",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uugo1/todo/issues"
+  },
+  "homepage": "https://github.com/uugo1/todo#readme",
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "mongoose": "^4.11.3", 
+    "memwatch-next": "^0.3.0", 
+    "winston": "^2.3.1", 
+    "winston-papertrail": "^1.0.5", 
+     "os-monitor": "^1.0.5"
+  }
+}
