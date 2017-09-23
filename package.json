@@ -25,15 +25,21 @@
   },
   "homepage": "https://github.com/uugo1/todo#readme",
   "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-apidoc": "^0.11.0",
+    "grunt-aws-s3": "^2.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-uglify": "^3.1.0",
     "nodemon": "^1.11.0"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
-    "mongoose": "^4.11.3", 
-    "memwatch-next": "^0.3.0", 
-    "winston": "^2.3.1", 
-    "winston-papertrail": "^1.0.5", 
-     "os-monitor": "^1.0.5"
+    "mongoose": "^4.11.3",
+    "memwatch-next": "^0.3.0",
+    "winston": "^2.3.1",
+    "winston-papertrail": "^1.0.5",
+    "os-monitor": "^1.0.5"
   }
 }
