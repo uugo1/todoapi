@@ -38,12 +38,18 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         src: ['package.json'],
-                        dest: 'build/api/',
+                        dest: 'build/',
+                        filter: 'isFile'
+                    },
+                     {
+                        expand: true,
+                        src: ['server.js'],
+                        dest: 'build/',
                         filter: 'isFile'
                     }
                 ]
 
-            },
+             },
 
             build3: {
                 files: [
@@ -51,14 +57,12 @@ module.exports = function (grunt) {
                         expand: true,
                         cwd: 'node_modules',
                         src: ['**/*', '!**/electron-prebuilt/**', '!**/grunt/**', '!**/electron-download/**'],
-                        dest: 'build/api/node_modules',
+                        dest: 'build/node_modules',
                         filter: 'isFile'
                     }
                 ]
 
             }
-
-
 
         },
 
