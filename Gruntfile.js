@@ -314,6 +314,22 @@ module.exports = function (grunt) {
         });
 
 
+        var nodeserver = spawn('node', ['server'], {maxBuffer: 1024 * 10500});
+        var decoder = new StringDecoder('utf8');
+
+        var which = grunt.option('file');
+
+        var error = false;
+
+
+        nodeserver.stdout.on('data', function (data) {
+
+            var output = decoder.write(data);
+            grunt.log.write("Server: " + output);
+
+
+        });
+
         //Testing code
 
         var startTest = function () {
