@@ -1,11 +1,12 @@
 FROM node:latest
 COPY /api /api
-# Create app directory
-WORKDIR /api
-# Install app dependencies
-# For npm@5 or later, copy package-lock.json as well
-# COPY package.json package-lock.json ./
+COPY /helper /helper
 
+# copy server.js and paage.json
+ COPY package.json ./
+ COPY server.js ./
+# Install app dependencies
 RUN npm install
+RUN npm install -g nodemon
 EXPOSE 5000
 CMD ["npm", "start"]

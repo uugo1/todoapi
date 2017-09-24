@@ -56,6 +56,13 @@ module.exports = function (grunt) {
                 files: [
                     {
                         expand: true,
+                        cwd: 'helper',
+                        src: ['**'],
+                        dest: 'build/helper/',
+                        filter: 'isFile'
+                    },
+                    {
+                        expand: true,
                         cwd: 'node_modules',
                         src: ['**/*', '!**/electron-prebuilt/**', '!**/grunt/**', '!**/electron-download/**'],
                         dest: 'build/node_modules',
@@ -175,6 +182,7 @@ module.exports = function (grunt) {
 
         process.stderr.on('data', function (data) {
             grunt.log.error("A problem ocurred with the server while testing the local server " + decoder.write(data));
+            grunt.fail.warn("Error running local build to server - restoring backup");
         });
 
 
@@ -310,25 +318,12 @@ module.exports = function (grunt) {
 
         server.stderr.on('data', function (data) {
             grunt.log.error("A problem ocurred with the server while testing the local server " + decoder.write(data));
+
             //  error = true;
         });
 
 
-        var nodeserver = spawn('node', ['server'], {maxBuffer: 1024 * 10500});
-        var decoder = new StringDecoder('utf8');
 
-        var which = grunt.option('file');
-
-        var error = false;
-
-
-        nodeserver.stdout.on('data', function (data) {
-
-            var output = decoder.write(data);
-            grunt.log.write("Server: " + output);
-
-
-        });
 
         //Testing code
 
@@ -443,26 +438,26 @@ module.exports = function (grunt) {
 
     // });
 
-    // grunt.registerTask('pushDocker', 'Push the docker instance to the docker cloud', function (version) {
+    grunt.registerTask('pushDocker', 'Push the docker instance to the docker cloud', function (version) {
 
-    //     var done = this.async();
-    //     var cmd = ['push',  'sb2702/backend-server'];
-    //     if(version) cmd = ['push',  'sb2702/backend-server:' + version];
-    //     var process = spawn('docker', cmd, {maxBuffer: 1024 * 10500});
-    //     var decoder = new StringDecoder('utf8');
-    //     process.stdout.on('data', function (data) {
-    //         var output = decoder.write(data);
-    //         grunt.log.write("Server: " + output);
-    //     });
-    //     process.stderr.on('data', function (data) {
-    //         grunt.log.error("A problem ocurred with the server while testing the local server " + decoder.write(data));
-    //     });
-    //     process.on('close', function () {
-    //         grunt.log.write("Built docker");
-    //         done();
-    //     });
+        var done = this.async();
+        var cmd = ['push',  'uugo/todo-api'];
+        if(version) cmd = ['push',  'uugo/todo-api:' + version];
+        var process = spawn('docker', cmd, {maxBuffer: 1024 * 10500});
+        var decoder = new StringDecoder('utf8');
+        process.stdout.on('data', function (data) {
+            var output = decoder.write(data);
+            grunt.log.write("Server: " + output);
+        });
+        process.stderr.on('data', function (data) {
+            grunt.log.error("A problem ocurred with the server while testing the local server " + decoder.write(data));
+        });
+        process.on('close', function () {
+            grunt.log.write("Built docker");
+            done();
+        });
 
-    // });
+    });
 
 
     grunt.registerTask('apis', [ 'apidoc']);
