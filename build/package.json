@@ -31,7 +31,10 @@
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-jshint": "^1.1.0",
     "grunt-contrib-uglify": "^3.1.0",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "mocha": "*",
+    "chai": "*",
+    "supertest": "*"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
