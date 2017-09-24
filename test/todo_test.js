@@ -7,7 +7,7 @@ var should = require('chai').should(),
     api=supertest(targetAddr),
     mongoose = require('mongoose'),     //TaskSchema require('../src/helper/mongo'),
     taskmodel = require('../api/models/todoModel'),
-    async = require('async');    
+    async = require('async');
 
     var task = taskmodel.TaskSchema;
 
@@ -25,7 +25,7 @@ var should = require('chai').should(),
                 done();
             });
         });
-    
+
     it('it should retrieve all task', function (done) {
 
     api.get('/tasks')
